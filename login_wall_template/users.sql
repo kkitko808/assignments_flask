@@ -1,0 +1,1 @@
+SELECT *, Count(sender_id) AS amount_pokes FROM users LEFT JOIN pokes ON users.id = pokes.receiver_id WHERE users.id != 71 GROUP BY (users.id) ORDER BY COUNT(receiver_id) DESC;

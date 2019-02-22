@@ -1,0 +1,18 @@
+.container{
+}
+.left_field{
+    display:inline-block;
+    min-height:400px;
+    margin-right:20px;
+}
+.right_field{
+    display:inline-block;
+    vertical-align: top;
+    min-height:400px;
+}
+p{
+    margin-bottom:0px;
+}
+.red{
+    color:red;
+}

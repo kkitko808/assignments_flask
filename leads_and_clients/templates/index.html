@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Leads and Clients</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+    <script src="{{ url_for('static', filename='index.js')}}"></script>
+
+</head>
+<body>
+    <div class=container>
+        <h1 class="head">Report Dashboard</h1>
+        <!-- *** NEEDS ADJUSTMENT ADD METHOD AND ROUTE Establish calendars that redirect to NEEDS ADJUSTMENT -->
+        <form action="/">
+            Report dates:
+            <input class= "calendar" type="date" name="first_date">
+            <input class= "calendar" type="date" name="last_date">
+            <input type="submit" value="Update">
+        </form>
+        <div class="content">
+            <!-- List of all customers and # of leads with table -->
+            <h5 class="table_text">List of all customers and # of leads</h5>
+            <table class="table table-striped">
+                <thead>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Number of Leads</th>
+                </thead>
+                <tbody>
+                    <!-- Where to begin looping for customer name& lead static currently -->
+                    <tr>
+                        <td>Michael Choi</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>Joe Smith</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Ryan Owen</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>Masaki Fujimoto</td>
+                        <td>7</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- End of table -->
+            <!-- Beginning of chart content -->
+            <div id="chartContainer"></div>
+        </div>
+    </div>
+</body>
+</html>

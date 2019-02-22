@@ -1,0 +1,40 @@
+.container{
+    margin-top:100px;
+    border:2px solid black;
+    padding: 40px;
+    text-align: top;
+    max-width:750px;
+}
+.body-content{
+    display: inline-block;
+    width:300px;
+}
+.container div{
+    display:inline-block;
+    vertical-align: top;
+}
+.container .form-body{
+    display:inline-block;
+    width:300px;
+    margin-left:200px;
+    
+
+}
+.container .form-control{
+    margin-top:12px;
+    margin-bottom:3px;
+}
+.text-group{
+    display:block;
+    width:600px;
+}
+.textbox{
+    display:block;
+}
+label{
+    margin-top:20px;
+    margin-bottom:30px;
+    display:block;
+    align-content: center;
+    align-self: center;
+}

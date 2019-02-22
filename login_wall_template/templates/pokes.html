@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style>
+    p{
+        margin-bottom:5px;
+    }
+    h4{
+        text-decoration: underline;
+    }
+    h5{
+        color:green;
+    }
+    .header{
+    }
+    .container{
+        text-align:center;
+    }
+    .lefttext{
+        display:inline-block;
+        width:45%;
+    }
+    .leftmssg{
+        display:inline-block;
+    }
+    .rightmssg{
+        display:inline-block;
+        
+    }
+    .righttext{
+        display:inline-block;
+        width:45%;
+    }
+    .contentleft{
+        width:45%;
+        text-align:left;
+        min-height:500px;
+        padding-top:20px;
+        border-right: 3px solid black;
+        display:inline-block;
+        vertical-align: top;
+    }
+    .pokes{
+        padding-left:2em;
+    }
+    .trash{
+        width:8%;
+        border:3px solid black;
+    }
+    .contentleft p{
+        width:80%;
+        display:inline-block;
+    }
+    .contentleft span{
+        color:purple;
+    }
+    .contentright{
+        width:45%;
+        text-align:left;
+        min-height:500px;
+        padding-top:20px;
+        display:inline-block;
+        vertical-align:top;
+    }
+    .poke_user{
+        display:inline;
+        width:20%;
+    }
+    .contentTop{
+        text-align:left;
+        display:inline-block;
+    }
+    .contentBottom{
+        text-align:left;
+    }
+    th{
+        border:1px solid black !important;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="lefttext">
+                <h3 class="leftmssg">Welcome, {{user[0]['name']}}!</h3>
+                <h6 class="leftmssg">{{pokes_total}} people poked you!</h6>
+            </div>
+            <div class="righttext">
+                <a href="/logout_user">Log Out</a>
+            </div>
+        </div>
+        <div class="contentTop">
+            {% if pokes_for_user %}
+                {% for poke in pokes_for_user %}
+                    <div class="poke">
+                        <p class="pokes">{{poke['name']}} poked you {{poke['pokes_from']}} times</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="contentBottom">
+            <h4>People you may want to poke:</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Alias</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Poke History</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in all_users %}
+                        <tr>
+                            <th scope="col">{{user["name"]}}</th>
+                            <th scope="col">{{user["alias"]}}</th>
+                            <th scope="col">{{user["email"]}}</th>
+                            <th scope="col">{{user["amount_pokes"]}}</th>
+                            <th scope="col">
+                            <a href="/poke/{{user['id']}}">
+                                <button type="submit" class="btn btn-success">Poke!</button>
+                            </a></th>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+</body>
+</html>

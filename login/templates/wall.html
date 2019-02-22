@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style>
+    p{
+        margin-bottom:5px;
+    }
+    h4{
+        text-decoration: underline;
+    }
+    h5{
+        color:green;
+    }
+    .header{
+        border-bottom:2px solid black;
+    }
+    .container{
+        text-align:center;
+    }
+    .leftmssg{
+        display:inline-block;
+        width:45%;
+    }
+    .rightmssg{
+        display:inline-block;
+        
+    }
+    .righttext{
+        display:inline-block;
+        width:45%;
+    }
+    .contentleft{
+        width:45%;
+        text-align:left;
+        min-height:500px;
+        padding-top:20px;
+        border-right: 3px solid black;
+        display:inline-block;
+        vertical-align: top;
+    }
+    .messages{
+        padding-left:2em;
+    }
+    .trash{
+        width:8%;
+        border:3px solid black;
+    }
+    .contentleft p{
+        width:80%;
+        display:inline-block;
+    }
+    .contentleft span{
+        color:purple;
+    }
+    .contentright{
+        width:45%;
+        text-align:left;
+        min-height:500px;
+        padding-top:20px;
+        display:inline-block;
+        vertical-align:top;
+    }
+    .message_user{
+        display:inline;
+        width:20%;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="leftmssg">CodingDojo Wall</h1>
+            <div class="righttext">
+                <h3 class="rightmssg">Welcome, {{user[0]['first_name']}}!</h3>
+                <a href="/logout_user">Log Out</a>
+            </div>
+        </div>
+        <div class="contentleft">
+            <h4>{{received_count}} Message(s) for You</h4>
+            {% for message in messages_for_user %}
+                <div class="message">
+                    <p>{{message['sender']}} said <span>{{message['created_at']}}</span>:</p>
+                    <a href="/delete/{{message['id']}}">
+                        <img class="trash"src="/static/trash.png">
+                    </a>
+                    <p class="messages">{{message['message']}}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="contentright">
+            <h4>Send Messages</h4>
+            <h5>You have sent {{sent_count}} messages so far.</h5>
+            <form action = "/send_message" method="POST">
+                <select class="form-control" name= "receiver_id">
+                {% for user in all_users %}
+                    <option value="{{user['id']}}">{{user['first_name']}}</option>
+                {% endfor %}
+                </select>
+                <h6 class="message_user">User</h6>
+                <div class="input-group">
+                    <textarea name="message" class="form-control" aria-label="With textarea"></textarea>
+                </div>
+                    <button type="submit" class="btn btn-success right-btn">Submit!</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

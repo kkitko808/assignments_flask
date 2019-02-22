@@ -1,0 +1,26 @@
+.head{
+    background-color:lightgray;
+    border: 2px solid black;
+}
+form{
+    text-align:right;
+}
+.calendar{
+    margin-right:10px;
+    width:160px;
+}
+.content{
+    margin-top:50px;
+}
+.table_text{
+    text-decoration: underline;
+    margin-bottom:15px;
+}
+.table{
+    width:500px;
+    margin-bottom:30px;
+}
+#chartContainer{
+    text-align:left;
+    display:inline-block;
+}
